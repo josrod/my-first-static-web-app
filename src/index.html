@@ -12,7 +12,16 @@
   <main>
     <h1>Vanilla JavaScript App</h1>
     <h2>Test App for Azure static web app</h2>
-    <h2>Show some content in the web page and let Github action to update it.</h2>
+
+    <p>Loading content from the API: <b id="name">...</b></p>
+  </main>
+
+  <script>
+    (async function () {
+      const { text } = await (await fetch(`/api/message`)).json();
+      document.querySelector('#name').textContent = text;
+    }())
+  </script>
 
   </main>
 </body>
